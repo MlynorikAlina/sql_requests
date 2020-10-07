@@ -1,0 +1,19 @@
+окт 07, 2020 11:38:59 PM com.bsu.Main main
+FINE: Program started...
+
+окт 07, 2020 11:39:33 PM com.bsu.Query getInfoByRequest
+FINE: Find company BY_SHORT_NAME::short name
+		Companies found: 2
+окт 07, 2020 11:39:35 PM com.bsu.Query getInfoByRequest
+FINE: EXIT
+
+
+окт 07, 2020 11:40:20 PM com.bsu.Main main
+FINE: Program started...
+
+окт 07, 2020 11:40:41 PM com.bsu.Query getInfoByRequest
+FINE: Find company BY_SHORT_NAME::fk
+		Companies found: 0
+окт 07, 2020 11:40:43 PM com.bsu.Query getInfoByRequest
+FINE: EXIT
+

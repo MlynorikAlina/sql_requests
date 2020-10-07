@@ -78,44 +78,54 @@ public class Query {
             System.out.println("Enter key: ");
             key = scanner.nextInt();
             scanner.nextLine();
+            String requestData;
 
             switch (RequestNumber.fromInt(key)) {
                 case BY_SHORT_NAME:
                     System.out.println("Enter shortName: ");
                     String shortName = scanner.nextLine();
+                    requestData = shortName;
                     result = findByShortName(companyList, shortName);
                     break;
                 case BY_INDUSTRY:
                     System.out.println("Enter industry: ");
                     String industry = scanner.nextLine();
+                    requestData = industry;
                     result = findByIndustry(companyList, industry);
                     break;
                 case BY_ACTIVITY:
                     System.out.println("Enter activity: ");
                     String activity = scanner.nextLine();
+                    requestData = activity;
                     result = findByActivity(companyList, activity);
                     break;
                 case BY_FOUNDATION_DATE:
                     System.out.println("Enter 2 dates(from dd.mm.yyyy to dd.mm.yyyy): ");
-                    String[] dates = scanner.nextLine().split(" ");
+                    requestData = scanner.nextLine();
+                    String[] dates = requestData.split(" ");
                     Date date1 = Company.format.parse(dates[0]);
                     Date date2 = Company.format.parse(dates[1]);
                     result = findByFoundationDate(companyList, date1, date2);
                     break;
                 case BY_EMPLOYEE_NUMBER:
                     System.out.println("Enter 2 numbers(from .. to):");
-                    String[] nums = scanner.nextLine().split(" ");
+                    requestData = scanner.nextLine();
+                    String[] nums = requestData.split(" ");
                     int num1 = Integer.parseInt(nums[0]);
                     int num2 = Integer.parseInt(nums[1]);
                     result = findByEmployeeNumber(companyList, num1, num2);
                     break;
                 default:
+                    Main.LOGGER.fine("EXIT\n");
                     return;
             }
 
             System.out.println("Companies found: ");
             if (result.isEmpty()) System.out.println("None");
             else result.forEach(System.out::println);
+
+            Main.LOGGER.fine("Find company " + RequestNumber.fromInt(key) + "::" + requestData +
+                    "\n\t\tCompanies found: " + result.size());
         }
     }
 }
