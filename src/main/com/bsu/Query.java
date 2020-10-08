@@ -1,10 +1,8 @@
 package com.bsu;
 
-import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Query {
     public enum RequestNumber {
@@ -13,7 +11,8 @@ public class Query {
         BY_ACTIVITY(3),
         BY_FOUNDATION_DATE(4),
         BY_EMPLOYEE_NUMBER(5),
-        DEFAULT(0);
+        DEFAULT(6),
+        EXIT(0);
 
         private final int value;
 
@@ -30,102 +29,23 @@ public class Query {
     }
 
     static List<Company> findByShortName(List<Company> companyList, String shortName) {
-        List<Company> result = new ArrayList<>();
-        companyList.forEach(company -> {
-            if (company.getShortName().equalsIgnoreCase(shortName)) result.add(company);
-        });
-        return result;
+        return companyList.stream().filter(company -> company.getShortName().equalsIgnoreCase(shortName)).collect(Collectors.toList());
     }
 
     static List<Company> findByIndustry(List<Company> companyList, String industry) {
-        List<Company> result = new ArrayList<>();
-        companyList.forEach(company -> {
-            if (company.getIndustry().equalsIgnoreCase(industry)) result.add(company);
-        });
-        return result;
+        return companyList.stream().filter(company -> company.getIndustry().equalsIgnoreCase(industry)).collect(Collectors.toList());
     }
 
     static List<Company> findByActivity(List<Company> companyList, String activity) {
-        List<Company> result = new ArrayList<>();
-        companyList.forEach(company -> {
-            if (company.getActivity().equalsIgnoreCase(activity)) result.add(company);
-        });
-        return result;
+        return companyList.stream().filter(company -> company.getActivity().equalsIgnoreCase(activity)).collect(Collectors.toList());
     }
 
-    static List<Company> findByFoundationDate(List<Company> companyList, Date date1, Date date2) {
-        List<Company> result = new ArrayList<>();
-        companyList.forEach(company -> {
-            if (company.getDateOfFoundation().compareTo(date1) >= 0 && company.getDateOfFoundation().compareTo(date2) <= 0)
-                result.add(company);
-        });
-        return result;
+    static List<Company> findByFoundationDate(List<Company> companyList, Date startDate, Date endDate) {
+        return companyList.stream().filter(company -> company.getDateOfFoundation().compareTo(startDate) >= 0 && company.getDateOfFoundation().compareTo(endDate) <= 0).collect(Collectors.toList());
     }
 
-    static List<Company> findByEmployeeNumber(List<Company> companyList, int num1, int num2) {
-        List<Company> result = new ArrayList<>();
-        companyList.forEach(company -> {
-            if (company.getEmployeeNumber() >= num1 && company.getEmployeeNumber() <= num2) result.add(company);
-        });
-        return result;
+    static List<Company> findByEmployeeNumber(List<Company> companyList, int startNum, int endNum) {
+        return companyList.stream().filter(company -> company.getEmployeeNumber() >= startNum && company.getEmployeeNumber() <= endNum).collect(Collectors.toList());
     }
 
-    static void getInfoByRequest(Scanner scanner, List<Company> companyList) throws ParseException {
-        int key;
-        List<Company> result;
-        while (true) {
-            Main.printMenu();
-            System.out.println("Enter key: ");
-            key = scanner.nextInt();
-            scanner.nextLine();
-            String requestData;
-
-            switch (RequestNumber.fromInt(key)) {
-                case BY_SHORT_NAME:
-                    System.out.println("Enter shortName: ");
-                    String shortName = scanner.nextLine();
-                    requestData = shortName;
-                    result = findByShortName(companyList, shortName);
-                    break;
-                case BY_INDUSTRY:
-                    System.out.println("Enter industry: ");
-                    String industry = scanner.nextLine();
-                    requestData = industry;
-                    result = findByIndustry(companyList, industry);
-                    break;
-                case BY_ACTIVITY:
-                    System.out.println("Enter activity: ");
-                    String activity = scanner.nextLine();
-                    requestData = activity;
-                    result = findByActivity(companyList, activity);
-                    break;
-                case BY_FOUNDATION_DATE:
-                    System.out.println("Enter 2 dates(from dd.mm.yyyy to dd.mm.yyyy): ");
-                    requestData = scanner.nextLine();
-                    String[] dates = requestData.split(" ");
-                    Date date1 = Company.format.parse(dates[0]);
-                    Date date2 = Company.format.parse(dates[1]);
-                    result = findByFoundationDate(companyList, date1, date2);
-                    break;
-                case BY_EMPLOYEE_NUMBER:
-                    System.out.println("Enter 2 numbers(from .. to):");
-                    requestData = scanner.nextLine();
-                    String[] nums = requestData.split(" ");
-                    int num1 = Integer.parseInt(nums[0]);
-                    int num2 = Integer.parseInt(nums[1]);
-                    result = findByEmployeeNumber(companyList, num1, num2);
-                    break;
-                default:
-                    Main.LOGGER.fine("EXIT\n");
-                    return;
-            }
-
-            System.out.println("Companies found: ");
-            if (result.isEmpty()) System.out.println("None");
-            else result.forEach(System.out::println);
-
-            Main.LOGGER.fine("Find company " + RequestNumber.fromInt(key) + "::" + requestData +
-                    "\n\t\tCompanies found: " + result.size());
-        }
-    }
 }

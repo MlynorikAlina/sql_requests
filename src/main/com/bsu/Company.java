@@ -1,12 +1,11 @@
 package com.bsu;
 
+import com.sun.media.sound.InvalidFormatException;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Company {
     private final String name;
@@ -24,19 +23,49 @@ public class Company {
 
     public static final SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 
-    Company(String[] args) throws ParseException {
-        name = args[0];
-        shortName = args[1];
-        actualizationDate = format.parse(args[2]);
-        address = args[3];
-        dateOfFoundation = format.parse(args[4]);
-        employeeNumber = Integer.parseInt(args[5]);
-        auditor = args[6];
-        telephoneNumber = args[7];
-        email = args[8];
-        industry = args[9];
-        activity = args[10];
-        site = args[11];
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Company company = (Company) o;
+        return employeeNumber == company.employeeNumber &&
+                Objects.equals(name, company.name) &&
+                Objects.equals(shortName, company.shortName) &&
+                Objects.equals(actualizationDate, company.actualizationDate) &&
+                Objects.equals(address, company.address) &&
+                Objects.equals(dateOfFoundation, company.dateOfFoundation) &&
+                Objects.equals(auditor, company.auditor) &&
+                Objects.equals(telephoneNumber, company.telephoneNumber) &&
+                Objects.equals(email, company.email) &&
+                Objects.equals(industry, company.industry) &&
+                Objects.equals(activity, company.activity) &&
+                Objects.equals(site, company.site);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, shortName, actualizationDate, address, dateOfFoundation, employeeNumber, auditor, telephoneNumber, email, industry, activity, site);
+    }
+
+    public Company(String[] args) throws CustomException {
+        try {
+            if (args.length == 12) {
+                name = args[0];
+                shortName = args[1];
+                actualizationDate = format.parse(args[2]);
+                address = args[3];
+                dateOfFoundation = format.parse(args[4]);
+                employeeNumber = Integer.parseInt(args[5]);
+                auditor = args[6];
+                telephoneNumber = args[7];
+                email = args[8];
+                industry = args[9];
+                activity = args[10];
+                site = args[11];
+            }else throw new InvalidFormatException("Invalid number of arguments");
+        } catch (Exception ex) {
+            throw new CustomException("Reading input file is failed :: " + ex);
+        }
     }
 
     private String getStringLine(Character sep) {
@@ -47,17 +76,6 @@ public class Company {
     @Override
     public String toString() {
         return getStringLine(';');
-    }
-
-    static List<Company> readListOfCompanies(Scanner input) throws ParseException {
-        String[] lineArgs;
-        List<Company> companyList = new ArrayList<>();
-
-        while (input.hasNextLine()) {
-            lineArgs = input.nextLine().split(";");
-            companyList.add(new Company(lineArgs));
-        }
-        return companyList;
     }
 
     public String getShortName() {
