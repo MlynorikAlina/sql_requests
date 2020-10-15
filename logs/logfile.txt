@@ -58,3 +58,27 @@ FINE: Program started...
 
 окт 08, 2020 7:47:37 PM com.bsu.Main main
 FINE: Exception :: com.bsu.CustomException: Reading data failed :: java.text.ParseException: Unparseable date: "121313131"
+окт 15, 2020 9:17:22 AM com.bsu.Main main
+FINE: Program started...
+
+окт 15, 2020 9:17:54 AM com.bsu.Main getInfoByRequest
+FINE: Find company BY_SHORT_NAME::short name
+		Companies found: 2
+окт 15, 2020 9:18:41 AM com.bsu.Main getInfoByRequest
+FINE: Find company BY_FOUNDATION_DATE::10.10.2002 10.10.2006
+		Companies found: 2
+окт 15, 2020 9:19:08 AM com.bsu.Main getInfoByRequest
+FINE: EXIT
+
+окт 15, 2020 9:26:30 AM com.bsu.Main main
+FINE: Program started...
+
+окт 15, 2020 9:26:42 AM com.bsu.Main getInfoByRequest
+FINE: Find company BY_SHORT_NAME::short name
+		Companies found: 2
+окт 15, 2020 9:27:13 AM com.bsu.Main getInfoByRequest
+FINE: Find company BY_FOUNDATION_DATE::10.10.2001 10.10.2007
+		Companies found: 2
+окт 15, 2020 9:27:16 AM com.bsu.Main getInfoByRequest
+FINE: EXIT
+

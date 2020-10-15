@@ -39,7 +39,7 @@ public class Main {
                     companyList.add(new Company(lineArgs));
                 }
 
-                getInfoByRequest(scanner, companyList);
+                getInfoByRequest(scanner, companyList, outputFile);
 
 
             } catch (IOException ex) {
@@ -52,11 +52,11 @@ public class Main {
         }
     }
 
-    static void getInfoByRequest(Scanner scanner, List<Company> companyList) throws CustomException {
+    static void getInfoByRequest(Scanner scanner, List<Company> companyList, FileWriter of) throws CustomException {
         int key;
         List<Company> result;
         while (true) {
-            Main.printMenu();
+            printMenu();
             System.out.println("Enter key: ");
             key = scanner.nextInt();
             scanner.nextLine();
@@ -111,8 +111,17 @@ public class Main {
             }
 
             System.out.println("Companies found: ");
-            if (result.isEmpty()) System.out.println("None");
-            else result.forEach(System.out::println);
+            try {
+                if (result.isEmpty()) {
+                    of.write(("None\n"));
+                } else {
+                    for (Company company : result)
+                        of.write(company.toString() + System.lineSeparator());
+                }
+                of.write(System.lineSeparator());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
             LOGGER.fine("Find company " + Query.RequestNumber.fromInt(key) + "::" + requestData +
                     "\n\t\tCompanies found: " + result.size());

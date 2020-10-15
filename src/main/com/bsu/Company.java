@@ -49,7 +49,8 @@ public class Company {
 
     public Company(String[] args) throws CustomException {
         try {
-            if (args.length == 12) {
+            if (args.length != 12) throw new InvalidFormatException("Invalid number of arguments");
+            else{
                 name = args[0];
                 shortName = args[1];
                 actualizationDate = format.parse(args[2]);
@@ -62,7 +63,7 @@ public class Company {
                 industry = args[9];
                 activity = args[10];
                 site = args[11];
-            }else throw new InvalidFormatException("Invalid number of arguments");
+            }
         } catch (Exception ex) {
             throw new CustomException("Reading input file is failed :: " + ex);
         }
