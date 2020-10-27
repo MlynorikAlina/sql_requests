@@ -50,7 +50,7 @@ public class Company {
     public Company(String[] args) throws CustomException {
         try {
             if (args.length != 12) throw new InvalidFormatException("Invalid number of arguments");
-            else{
+            else {
                 name = args[0];
                 shortName = args[1];
                 actualizationDate = format.parse(args[2]);
