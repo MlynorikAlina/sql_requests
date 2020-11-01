@@ -3,5 +3,3 @@ Full name;Short name;01.10.2002;Address;01.01.2001;100;auditor;3,75225E+11;mail;
 Full name;Short name;01.10.2002;Address;01.01.2001;100;auditor;3,75225E+11;mail;sphere;activity;site
 Full name;shorT name;01.10.2005;Address;01.01.2005;200;auditor;3,75225E+11;mail;sphere;activity;site
 
-Full name;name;01.10.2020;Address;01.01.2011;1000;auditor;3,75225E+11;mail;sphere;activity;site
-

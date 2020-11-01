@@ -84,3 +84,75 @@ FINE: SQL request: select * from company_table where short_name="short name" ind
 окт 22, 2020 10:05:35 AM com.bsu.Main processing
 FINE: SQL request: select * from company_table where short_name="name" industry="sphere"
 		Companies found: 1
+окт 29, 2020 8:40:22 AM com.bsu.Main main
+FINE: Program started...
+
+окт 29, 2020 8:40:22 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" employee_num between 90 and 181
+		Companies found: 1
+окт 29, 2020 8:40:22 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" industry="sphere"
+		Companies found: 2
+окт 29, 2020 8:40:22 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="name" industry="sphere" into outfile request1.txt
+		Companies found: 1
+окт 29, 2020 8:44:12 AM com.bsu.Main main
+FINE: Program started...
+
+окт 29, 2020 8:44:12 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" employee_num between 90 and 181
+		Companies found: 1
+окт 29, 2020 8:44:12 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" industry="sphere"
+		Companies found: 2
+окт 29, 2020 8:44:12 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="name" industry="sphere" into outfile request1.txt
+		Companies found: 1
+окт 29, 2020 8:58:25 AM com.bsu.Main main
+FINE: Program started...
+
+окт 29, 2020 8:58:26 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" employee_num between 90 and 181
+		Companies found: 1
+окт 29, 2020 8:58:26 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" industry="sphere"
+		Companies found: 2
+окт 29, 2020 8:58:26 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="name" industry="sphere" into outfile request1.txt
+		Companies found: 1
+окт 29, 2020 8:59:07 AM com.bsu.Main main
+FINE: Program started...
+
+окт 29, 2020 8:59:07 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" employee_num between 90 and 181
+		Companies found: 1
+окт 29, 2020 8:59:07 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" industry="sphere"
+		Companies found: 2
+окт 29, 2020 8:59:07 AM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="name" industry="sphere" into outfile request1.txt
+		Companies found: 1
+ноя 01, 2020 9:26:27 PM com.bsu.Main main
+FINE: Program started...
+
+ноя 01, 2020 9:26:29 PM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" employee_num between 90 and 181
+		Companies found: 1
+ноя 01, 2020 9:26:29 PM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" industry="sphere"
+		Companies found: 2
+ноя 01, 2020 9:26:29 PM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="name" industry="sphere" into outfile request1.txt
+		Companies found: 1
+ноя 01, 2020 9:26:55 PM com.bsu.Main main
+FINE: Program started...
+
+ноя 01, 2020 9:26:55 PM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" employee_num between 90 and 181
+		Companies found: 1
+ноя 01, 2020 9:26:55 PM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="short name" industry="sphere"
+		Companies found: 2
+ноя 01, 2020 9:26:55 PM com.bsu.Main processing
+FINE: SQL request: select * from company_table where short_name="name" industry="sphere" into outfile request1.txt
+		Companies found: 1
